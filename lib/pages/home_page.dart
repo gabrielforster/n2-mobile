@@ -9,8 +9,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(title: const Text('N2 Games')),
+      appBar: AppBar(
+          title: Obx(() => Text('N2 Games - ${itemController.items.length} jogos registrados'))
+
+      ),
       body: Obx(() {
         return ListView.builder(
           itemCount: itemController.items.length,
@@ -18,10 +22,16 @@ class HomePage extends StatelessWidget {
             final item = itemController.items[index];
             return ListTile(
               title: Text(item.name),
-              subtitle: Text(item.description),
+              subtitle: Text('${item.description}\nNota: ${item.review}'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {
+                      Get.to(() => EditPage(game: item));
+                    },
+                  ),
                   IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
@@ -30,7 +40,7 @@ class HomePage extends StatelessWidget {
                         builder: (BuildContext context) {
                           return AlertDialog(
                             title: const Text('Confirmar Exclusão'),
-                            content: const Text('Deseja desistir do presente?'),
+                            content: const Text('Deseja excluir esse jogo?'),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.of(context).pop(),
@@ -58,7 +68,7 @@ class HomePage extends StatelessWidget {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => EditPage(game: null)),
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.gamepad_outlined),
       ),
     );
   }

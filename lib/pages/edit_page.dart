@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/game_controller.dart';
 import '../models/game.dart';
+import '../utils/hex_color.dart';
 
 class EditPage extends StatelessWidget {
   final Game? game;
@@ -17,13 +18,16 @@ class EditPage extends StatelessWidget {
 
   EditPage({Key? key, this.game}) : super(key: key) {
     if (game != null) {
+      nameController.text = game!.name;
       descriptionController.text = game!.description;
-      // Initialize other fields if item is not null
+      reviewController.text = game!.review.toString();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    Color primary = HexColor.fromHex("#B0FE76");
+
     return Scaffold(
       appBar: AppBar(
           title: Text(game == null ? 'Adicionar jogo' : 'Editar jogo')),
@@ -94,11 +98,22 @@ class EditPage extends StatelessWidget {
                   );
                 }
                 Get.back();
+                Get.snackbar(
+                  'Sucesso',
+                  game == null
+                      ? 'Jogo criado! O mesmo se encontra na listagem'
+                      : 'Jogo editado! O mesmo se encontra com os novos valores',
+                  snackPosition: SnackPosition.TOP,
+                );
               },
               style: ElevatedButton.styleFrom(
+                 backgroundColor: primary,
                  minimumSize: const Size.fromHeight(50),
               ),
-              child: Text(game == null ? 'Adicionar' : 'Atualizar'),
+              child: Text(
+                  game == null ? 'Adicionar' : 'Atualizar',
+                  style: const TextStyle(fontSize: 18, color: Colors.black)
+              ),
             ),
           ],
         ),
