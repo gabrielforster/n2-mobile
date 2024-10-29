@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: Obx(() => Text('N2 Games - ${itemController.items.length} jogos registrados'))
+          title: Obx(() => Text('GameTracker - ${itemController.items.length} jogos registrados'))
 
       ),
       body: Obx(() {
