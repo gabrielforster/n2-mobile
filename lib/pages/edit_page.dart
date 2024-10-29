@@ -30,7 +30,7 @@ class EditPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text(game == null ? 'Adicionar jogo' : 'Editar jogo')),
+          title: Text(game == null ? 'Adicionar jogo' : 'Editar jogo')), // Titulo dinamico da tela para Adicao e Edicao de um jogo
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -55,8 +55,11 @@ class EditPage extends StatelessWidget {
                 if (Get.isSnackbarOpen) {
                   Get.closeCurrentSnackbar();
                 }
+
+                // Validacoes para o valor da nota
                 if (number == null) return;
                 if (number < 1 || number > 5) {
+                  // Feedback visual para valor invalido de nota
                   Get.snackbar(
                     'Erro',
                     'Por favor, insira um número entre 1 e 5',
@@ -98,6 +101,8 @@ class EditPage extends StatelessWidget {
                   );
                 }
                 Get.back();
+
+                // Feedback visual para criacao ou atualizacao de um jogo com sucesso
                 Get.snackbar(
                   'Sucesso',
                   game == null

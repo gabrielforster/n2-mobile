@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Game {
+class Game { // Definicao do model de um jogo
   String id;
   String name;
   String description;
@@ -15,6 +15,7 @@ class Game {
     required this.review,
   });
 
+  // Conversao de um registro de jogo na colecao para um objeto manipulavel dentro do Flutter
   factory Game.fromMap(Map<String, dynamic> data, String documentId) {
     return Game(
       id: documentId,

@@ -15,6 +15,7 @@ class ItemController extends GetxController {
   }
 
   void fetchItems() {
+    // Metodo responsavel pela listagem e atualizacao em tempo real da colecao de jogos
     _firestore
         .collection('games')
         .orderBy('created_at', descending: false)
@@ -26,6 +27,7 @@ class ItemController extends GetxController {
   }
 
   Future<void> addItem(String name, String description, int review) async {
+    // Metodo resposavel pela criacao de um novo jogo
     await _firestore.collection('games').add({
       'name': name,
       'description': description,
@@ -35,6 +37,7 @@ class ItemController extends GetxController {
   }
 
   Future<void> updateItem(String id, String name, String description, int review) async {
+    // Metodo responsavel pela edicao de um jogo
     await _firestore.collection('games').doc(id).update({
       'name': name,
       'description': description,
@@ -43,6 +46,7 @@ class ItemController extends GetxController {
   }
 
   Future<void> deleteItem(String id) async {
+    // Metodo responsavel pela delecao de um jogo
     await _firestore.collection('games').doc(id).delete();
   }
 }

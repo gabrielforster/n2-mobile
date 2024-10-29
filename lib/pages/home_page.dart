@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Obx(() => Text('GameTracker - ${itemController.items.length} jogos registrados')),
+        title: Obx(() => Text('GameTracker - ${itemController.items.length} jogos registrados')), // Titulo da pagina
       ),
       body: Obx(() {
         return ListView.builder(
@@ -20,24 +20,24 @@ class HomePage extends StatelessWidget {
           itemBuilder: (context, index) {
             final item = itemController.items[index];
             return ListTile(
-              title: Text(item.name),
-              subtitle: Text('${item.description}\nNota: ${item.review}'),
+              title: Text(item.name), // Exibicao do nome do jogo
+              subtitle: Text('${item.description}\nNota: ${item.review}'), // Exibicao da descricao junto a nota, separados por uma quebra de linha
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.edit),
+                    icon: const Icon(Icons.edit), // Icone de edicao
                     onPressed: () {
-                      Get.to(() => EditPage(game: item));
+                      Get.to(() => EditPage(game: item)); // Abrindo a tela de edicao ao clicar no icone
                     },
                   ),
                   IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () {
+                    icon: const Icon(Icons.delete), // Icone de delecao
+                    onPressed: () { // Abrindo modal de confirmacao para delecao de um jogo
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return AlertDialog(
+                          return AlertDialog( // O modal de confirmacao
                             title: const Text('Confirmar Exclusão'),
                             content: const Text('Deseja excluir esse jogo?'),
                             actions: [
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton( // Botao flutuante para abertura da tela de adicao de novos jogos
         onPressed: () => Get.to(() => EditPage(game: null)),
         child: const Icon(Icons.gamepad_outlined),
       ),
