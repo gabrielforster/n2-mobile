@@ -15,7 +15,11 @@ class ItemController extends GetxController {
   }
 
   void fetchItems() {
-    _firestore.collection('games').snapshots().listen((snapshot) {
+    _firestore
+        .collection('games')
+        .orderBy('created_at', descending: false)
+        .snapshots()
+        .listen((snapshot) {
       items.value =
           snapshot.docs.map((doc) => Game.fromMap(doc.data(), doc.id)).toList();
     });
@@ -26,6 +30,7 @@ class ItemController extends GetxController {
       'name': name,
       'description': description,
       'review': review,
+      'created_at': FieldValue.serverTimestamp(),
     });
   }
 

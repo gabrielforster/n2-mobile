@@ -102,7 +102,7 @@ class EditPage extends StatelessWidget {
                   'Sucesso',
                   game == null
                       ? 'Jogo criado! O mesmo se encontra na listagem'
-                      : 'Jogo editado! O mesmo se encontra com os novos valores',
+                      : 'Jogo editado! O mesmo se encontra atualizado na listagem',
                   snackPosition: SnackPosition.TOP,
                 );
               },
