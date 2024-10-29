@@ -9,14 +9,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-          title: Obx(() => Text('GameTracker - ${itemController.items.length} jogos registrados'))
-
+        title: Obx(() => Text('GameTracker - ${itemController.items.length} jogos registrados')),
       ),
       body: Obx(() {
         return ListView.builder(
+          padding: const EdgeInsets.only(bottom: 80.0),
           itemCount: itemController.items.length,
           itemBuilder: (context, index) {
             final item = itemController.items[index];
@@ -61,7 +60,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              onTap: () => Get.to(() => EditPage(game: item)),
             );
           },
         );
