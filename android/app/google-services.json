@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "15089359050",
+    "project_id": "n2mobilerocha",
+    "storage_bucket": "n2mobilerocha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15089359050:android:b51a002e05100a9ad77c33",
+        "android_client_info": {
+          "package_name": "com.n2mobilerocha.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwrwpORjvBllVQSg99J1P01TN1dl4fJcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
